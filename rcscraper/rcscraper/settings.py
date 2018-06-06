@@ -13,7 +13,7 @@ BOT_NAME = 'rcscraper'
 
 SPIDER_MODULES = ['rcscraper.spiders']
 NEWSPIDER_MODULE = 'rcscraper.spiders'
-ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
+ITEM_PIPELINES = {'rcscraper.pipelines.BrcFilesPipeline': 1}
 FILES_STORE = 'files/nhs/'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
