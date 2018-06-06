@@ -22,7 +22,7 @@ def process(filename):
             if df is None:
                 continue
             try:
-                df.to_csv(f"output/{name}_page_{i+1}.csv")
+                df.to_csv(f"{name}_page_{i+1}.csv")
             except:
                 pass
 
