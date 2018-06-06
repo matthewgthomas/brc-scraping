@@ -23,6 +23,9 @@ class BrcFilesPipeline(FilesPipeline):
         elif isinstance(info.spider, spiders.nhs_uk.NhsUkSpider):
             return self.file_path_nhsuk(request, response, info)
 
+        elif isinstance(info.spider, spiders.modern_slavery.ModernSlavery):
+            return self.file_path_modern_slavery(request, response, info)
+
     def file_path_nhsuk(self, request, response=None, info=None):
         filepath = "nhs/{}/{}".format(
             info.spider.year_map[request.url],
@@ -31,5 +34,16 @@ class BrcFilesPipeline(FilesPipeline):
         return filepath
 
     def file_path_immigration(self, request, response=None, info=None):
-        return os.path.join("immigration", request.url.split("/")[-1])
+        filepath = "immigration/{}/{}".format(
+            info.spider.section_map[request.url],
+            request.url.split("/")[-1],
+        )
+        return filepath
+
+    def file_path_modern_slavery(self, request, response=None, info=None):
+        filepath = "modern_slavery/{}/{}".format(
+            info.spider.section_map[request.url],
+            request.url.split("/")[-1],
+        )
+        return filepath
 
