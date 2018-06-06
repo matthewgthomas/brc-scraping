@@ -9,13 +9,13 @@ import os
 from scrapy.pipelines.files import FilesPipeline
 from . import spiders
 
+
 class RcscraperPipeline(object):
     def process_item(self, item, spider):
         return item
 
 
 class BrcFilesPipeline(FilesPipeline):
-
     def file_path(self, request, response=None, info=None):
         if isinstance(info.spider, spiders.immigration.Immigration):
             return self.file_path_immigration(request, response, info)
