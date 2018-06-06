@@ -1,6 +1,7 @@
 
 import sys
 import tempfile
+import os
 
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
@@ -14,17 +15,22 @@ def process(filename):
         for i in range(inputpdf.numPages):
             page = PdfFileWriter()
             page.addPage(inputpdf.getPage(i))
-            page_io = tempfile.NamedTemporaryFile(mode="w+b")
+            page_io = tempfile.NamedTemporaryFile(mode="w+b", delete=False)
             page.write(page_io)
             if page_io.read() is b"":
                 continue
-            df = read_pdf(page_io.name)
+            try:
+                df = read_pdf(page_io.name)
+            except:
+                pass
             if df is None:
                 continue
+            page_io.close()
             try:
                 df.to_csv(f"{name}_page_{i+1}.csv")
             except:
                 pass
+            os.remove(page_io.name)
 
 if __name__ == "__main__":
     process(sys.argv[1])
