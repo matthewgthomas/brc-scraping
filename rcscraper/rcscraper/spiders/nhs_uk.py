@@ -8,4 +8,6 @@ class NhsUkSpider(scrapy.Spider):
     start_urls = ['http://https://www.england.nhs.uk/statistics/statistical-work-areas/delayed-transfers-of-care/delayed-transfers-of-care-data-2017-18//']
 
     def parse(self, response):
-        pass
+        # hxs = HtmlXPathSelector(response)  # The XPath selector
+        sites = response.xpath('//article//p/a/@href')
+        return {"file_urls": [site.extract() for site in sites if site.extract()[-1] != "/"]}

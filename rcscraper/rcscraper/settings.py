@@ -13,13 +13,14 @@ BOT_NAME = 'rcscraper'
 
 SPIDER_MODULES = ['rcscraper.spiders']
 NEWSPIDER_MODULE = 'rcscraper.spiders'
-
+ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
+FILES_STORE = 'files/nhs/'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'rcscraper (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
