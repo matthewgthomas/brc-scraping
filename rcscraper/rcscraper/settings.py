@@ -14,7 +14,7 @@ BOT_NAME = 'rcscraper'
 SPIDER_MODULES = ['rcscraper.spiders']
 NEWSPIDER_MODULE = 'rcscraper.spiders'
 ITEM_PIPELINES = {'rcscraper.pipelines.BrcFilesPipeline': 1}
-FILES_STORE = 'files/nhs/'
+FILES_STORE = 'files/'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'rcscraper (+http://www.yourdomain.com)'

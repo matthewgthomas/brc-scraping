@@ -1,1 +1,5 @@
 scrapy==1.5.0
+
+# pdf stiff
+pyPDF2
+tabula-py
