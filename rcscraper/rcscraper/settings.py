@@ -22,6 +22,9 @@ FILES_STORE = 'files/nhs/'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
+MEDIA_ALLOW_REDIRECTS = True
+
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
