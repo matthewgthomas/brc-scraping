@@ -15,5 +15,5 @@ class Immigration(scrapy.Spider):
 
 
     def parse_data_page(self, response):
-        documents_urls = response.xpath('//section[@class="attachment embedded"]/div[@class="attachment-details"]/h2/a/@href')
-
+        documents_urls = response.xpath('//section[@class="attachment embedded"]/div[@class="attachment-details"]/h2/a/@href').extract()
+        return {"file_urls": [parse.urljoin(response.url, doc_url) for doc_url in documents_urls]}
