@@ -24,7 +24,11 @@ class BrcFilesPipeline(FilesPipeline):
             return self.file_path_nhsuk(request, response, info)
 
     def file_path_nhsuk(self, request, response=None, info=None):
-        return os.path.join("nhs", request.url.split("/")[-1])
+        filepath = "nhs/{}/{}".format(
+            info.spider.year_map[request.url],
+            request.url.split("/")[-1],
+        )
+        return filepath
 
     def file_path_immigration(self, request, response=None, info=None):
         return os.path.join("immigration", request.url.split("/")[-1])
